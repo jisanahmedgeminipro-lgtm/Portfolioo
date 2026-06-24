@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- === SEO === -->
+  <title>Jisan Ahmed — Full Stack Developer & Software Engineer</title>
+  <meta name="description" content="Jisan Ahmed — Full Stack Developer & Software Engineer from Bangladesh. Building premium web experiences. Member of Southeast Central Football Team." />
+  <meta name="author" content="Jisan Ahmed" />
+  <meta name="keywords" content="Jisan Ahmed, Full Stack Developer, Software Engineer, React, Spring Boot, Java, Bangladesh, Portfolio" />
+  <meta name="theme-color" content="#020617" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Jisan Ahmed — Full Stack Developer & Software Engineer" />
+  <meta property="og:description" content="Premium portfolio of Jisan Ahmed — engineer, leader, footballer." />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- === FONTS: Inter === -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- === ICONS: Font Awesome 6 === -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- === STYLES === -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================= -->
+  <!-- LOADING SCREEN -->
+  <!-- ============================================================= -->
+  <div id="loader" class="loader">
+    <div class="loader__brand">
+      <span class="loader__logo">JA</span>
+      <span class="loader__ring"></span>
+    </div>
+    <div class="loader__bar"><span class="loader__fill"></span></div>
+    <span class="loader__pct">0%</span>
+  </div>
+
+  <!-- Scroll progress + custom cursor + mouse glow -->
+  <div id="scroll-progress" class="scroll-progress"></div>
+  <div id="cursor" class="cursor"></div>
+  <div id="cursor-glow" class="cursor-glow"></div>
+  <div id="mouse-glow" class="mouse-glow" aria-hidden="true"></div>
+
+  <!-- Animated particle canvas (fixed background) -->
+  <canvas id="particles" class="particles" aria-hidden="true"></canvas>
+  <!-- Decorative gradient orbs -->
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb--1"></span>
+    <span class="orb orb--2"></span>
+    <span class="orb orb--3"></span>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- NAVBAR -->
+  <!-- ============================================================= -->
+  <header id="navbar" class="navbar">
+    <div class="container navbar__wrap">
+      <a href="#hero" class="navbar__logo">Jisan<span>.</span>dev</a>
+
+      <nav class="navbar__links" id="nav-links" aria-label="Primary">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#football" class="nav-link">Football</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <span class="nav-indicator" id="nav-indicator"></span>
+      </nav>
+
+      <div class="navbar__actions">
+        <!-- Theme customizer trigger -->
+        <button id="theme-btn" class="icon-btn" aria-label="Customize theme" title="Themes">
+          <i class="fa-solid fa-palette"></i>
+        </button>
+        <a href="#contact" class="btn btn--primary btn--sm magnetic">Hire Me</a>
+        <button id="hamburger" class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <nav class="mobile-menu__links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#services">Services</a>
+      <a href="#football">Football</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Theme customizer panel -->
+  <aside id="theme-panel" class="theme-panel" aria-hidden="true">
+    <h4 class="theme-panel__title"><i class="fa-solid fa-palette"></i> Themes</h4>
+    <button class="theme-opt" data-theme-set="dark"><span class="dot dot--dark"></span> Dark Mode</button>
+    <button class="theme-opt" data-theme-set="light"><span class="dot dot--light"></span> Light Mode</button>
+    <button class="theme-opt" data-theme-set="purple"><span class="dot dot--purple"></span> Purple Neon</button>
+    <button class="theme-opt" data-theme-set="blue"><span class="dot dot--blue"></span> Blue Professional</button>
+  </aside>
+
+  <main>
+
+    <!-- ============================================================= -->
+    <!-- HERO -->
+    <!-- ============================================================= -->
+    <section id="hero" class="hero">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <span class="badge reveal"><span class="badge__dot"></span> Available for opportunities</span>
+
+          <h1 class="hero__title">
+            <span class="hero__hi reveal">Hi, I'm</span>
+            <span class="hero__name" id="hero-name" data-text="Jisan Ahmed"></span>
+          </h1>
+
+          <p class="hero__role reveal">
+            <span class="hero__role-static">I build</span>
+            <span class="hero__typed" id="typed"></span><span class="type-caret">|</span>
+          </p>
+
+          <p class="hero__desc reveal">
+            Full Stack Developer &amp; Software Engineer from Bangladesh. I craft fast, elegant,
+            scalable products — and bring the same discipline, leadership and teamwork from the
+            football pitch into every line of code.
+          </p>
+
+          <div class="hero__cta reveal">
+            <a href="#contact" class="btn btn--primary magnetic">Hire Me <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#projects" class="btn btn--glass magnetic">View Projects</a>
+            <a href="#" class="btn btn--ghost magnetic"><i class="fa-solid fa-download"></i> Download CV</a>
+          </div>
+
+          <div class="hero__socials reveal">
+            <a href="#" class="icon-btn" aria-label="GitHub" data-brand="github"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="icon-btn" aria-label="LinkedIn" data-brand="linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="icon-btn" aria-label="WhatsApp" data-brand="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="mailto:jisan@example.com" class="icon-btn" aria-label="Email" data-brand="email"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+
+        <!-- Profile visual + floating tech icons -->
+        <div class="hero__visual reveal" data-tilt>
+          <div class="hero__ring"></div>
+          <div class="hero__photo glass">
+            <span class="hero__photo-initials">JA</span>
+          </div>
+          <span class="float-icon float-icon--1"><i class="fa-brands fa-react"></i></span>
+          <span class="float-icon float-icon--2"><i class="fa-brands fa-java"></i></span>
+          <span class="float-icon float-icon--3"><i class="fa-brands fa-js"></i></span>
+          <span class="float-icon float-icon--4"><i class="fa-solid fa-database"></i></span>
+          <span class="float-icon float-icon--5"><i class="fa-brands fa-git-alt"></i></span>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- ABOUT -->
+    <!-- ============================================================= -->
+    <section id="about" class="section">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__tag">01 — About</span>
+          <h2 class="section__title">The engineer behind the brand.</h2>
+        </header>
+
+        <div class="about__grid">
+          <div class="about__story reveal">
+            <p>
+              I'm <strong>Jisan Ahmed</strong>, a Full Stack Developer and Software Engineer based in
+              Bangladesh. I love turning complex problems into clean, intuitive products — from pixel-perfect
+              interfaces to robust backend systems built with Java and Spring Boot.
+            </p>
+            <p>
+              Beyond code, I'm an active footballer and a proud member of the
+              <strong>Southeast Central Football Team</strong>. The pitch taught me leadership, discipline,
+              and how to win as a team — values I carry into every project and every deadline.
+            </p>
+
+            <h3 class="about__sub">Career Objective</h3>
+            <p>
+              To build impactful software at a world-class engineering team, while continuing to grow as a
+              technical leader who ships reliable, beautiful products.
+            </p>
+
+            <div class="about__pills">
+              <span class="pill"><i class="fa-solid fa-bolt"></i> Technical Excellence</span>
+              <span class="pill"><i class="fa-solid fa-users"></i> Teamwork</span>
+              <span class="pill"><i class="fa-solid fa-medal"></i> Leadership</span>
+              <span class="pill"><i class="fa-solid fa-clock"></i> Discipline</span>
+              <span class="pill"><i class="fa-solid fa-wand-magic-sparkles"></i> Creativity</span>
+            </div>
+          </div>
+
+          <aside class="about__cards">
+            <div class="glass-card reveal" data-tilt>
+              <i class="fa-solid fa-graduation-cap glass-card__icon"></i>
+              <h4>Education</h4>
+              <p>B.Sc. in Computer Science &amp; Engineering<br /><span>Southeast University</span></p>
+            </div>
+            <div class="glass-card reveal" data-tilt>
+              <i class="fa-solid fa-code glass-card__icon"></i>
+              <h4>Focus</h4>
+              <p>Full Stack Engineering<br /><span>React · Java · Spring Boot</span></p>
+            </div>
+            <div class="glass-card reveal" data-tilt>
+              <i class="fa-solid fa-futbol glass-card__icon"></i>
+              <h4>Football</h4>
+              <p>Southeast Central Team<br /><span>Leadership &amp; Teamwork</span></p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- STATISTICS (animated counters) -->
+    <!-- ============================================================= -->
+    <section class="section section--tight">
+      <div class="container stats">
+        <div class="stat glass reveal"><span class="stat__num" data-count="40" data-suffix="+">0</span><span class="stat__label">Projects Completed</span></div>
+        <div class="stat glass reveal"><span class="stat__num" data-count="15" data-suffix="+">0</span><span class="stat__label">Technologies Learned</span></div>
+        <div class="stat glass reveal"><span class="stat__num" data-count="30" data-suffix="+">0</span><span class="stat__label">GitHub Repositories</span></div>
+        <div class="stat glass reveal"><span class="stat__num" data-count="8" data-suffix="">0</span><span class="stat__label">Certificates</span></div>
+        <div class="stat glass reveal"><span class="stat__num" data-count="50" data-suffix="+">0</span><span class="stat__label">Team Matches Played</span></div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- SKILLS -->
+    <!-- ============================================================= -->
+    <section id="skills" class="section">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__tag">02 — Skills</span>
+          <h2 class="section__title">A modern, full stack toolkit.</h2>
+        </header>
+
+        <div class="skills__grid">
+          <!-- Frontend -->
+          <div class="glass-card skill-cat reveal" data-tilt>
+            <h3 class="skill-cat__title"><i class="fa-solid fa-laptop-code"></i> Frontend</h3>
+            <div class="bar" data-level="92"><div class="bar__top"><span>HTML</span><span class="bar__pct">92%</span></div><span class="bar__track"><span class="bar__fill"></span></span></div>
+            <div class="bar" data-level="90"><div class="bar__top"><span>CSS</span><span class="bar__pct">90%</span></div><span class="bar__track"><span class="bar__fill"></span></span></div>
+            <div class="bar" data-level="88"><div class="bar__top"><span>JavaScript</span><span class="bar__pct">88%</span></div><span class="bar__track"><span class="bar__fill"></span></span></div>
+            <div class="bar" data-level="84"><div class="bar__top"><span>React</span><span class="bar__pct">84%</span></div><span class="bar__track"><span class="bar__fill"></span></span></div>
+          </div>
+          <!-- Backend -->
+          <div class="glass-card skill-cat reveal" data-tilt>
+            <h3 class="skill-cat__title"><i class="fa-solid fa-server"></i> Backend</h3>
+            <div class="bar" data-level="86"><div class="bar__top"><span>Java</span><span class="bar__pct">86%</span></div><span class="bar__track"><span class="bar__fill"></span></span></div>
+            <div class="bar" data-level="82"><div class="bar__top"><span>Spring Boot</span><span class="bar__pct">82%</span></div><span class="bar__track"><span class="bar__fill"></span></span></div>
+          </div>
+          <!-- Database -->
+          <div class="glass-card skill-cat reveal" data-tilt>
+            <h3 class="skill-cat__title"><i class="fa-solid fa-database"></i> Database</h3>
+            <div class="bar" data-level="85"><div class="bar__top"><span>MySQL</span><span class="bar__pct">85%</span></div><span class="bar__track"><span class="bar__fill"></span></span></div>
+          </div>
+          <!-- Tools -->
+          <div class="glass-card skill-cat reveal" data-tilt>
+            <h3 class="skill-cat__title"><i class="fa-solid fa-screwdriver-wrench"></i> Tools</h3>
+            <div class="bar" data-level="88"><div class="bar__top"><span>Git</span><span class="bar__pct">88%</span></div><span class="bar__track"><span class="bar__fill"></span></span></div>
+            <div class="bar" data-level="88"><div class="bar__top"><span>GitHub</span><span class="bar__pct">88%</span></div><span class="bar__track"><span class="bar__fill"></span></span></div>
+            <div class="bar" data-level="90"><div class="bar__top"><span>VS Code</span><span class="bar__pct">90%</span></div><span class="bar__track"><span class="bar__fill"></span></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- PROJECTS -->
+    <!-- ============================================================= -->
+    <section id="projects" class="section">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__tag">03 — Projects</span>
+          <h2 class="section__title">Selected work.</h2>
+        </header>
+
+        <div class="filters reveal">
+          <button class="filter is-active" data-filter="all">All</button>
+          <button class="filter" data-filter="fullstack">Full Stack</button>
+          <button class="filter" data-filter="frontend">Frontend</button>
+          <button class="filter" data-filter="backend">Backend</button>
+        </div>
+
+        <div class="projects__grid" id="projects-grid">
+          <!-- cards injected/enhanced by JS; static fallback below -->
+          <article class="project glass-card reveal" data-category="fullstack" data-tilt
+            data-title="Event Management System"
+            data-desc="A full-stack platform to create, manage and track events end-to-end with secure auth and an admin dashboard."
+            data-tech="React,Java,Spring Boot,MySQL">
+            <div class="project__img"><i class="fa-solid fa-calendar-check"></i></div>
+            <div class="project__body">
+              <span class="project__featured">Featured</span>
+              <h3 class="project__title">Event Management System</h3>
+              <p class="project__desc">Full-stack platform to create, manage and track events end-to-end.</p>
+              <div class="project__tech"><span>React</span><span>Spring Boot</span><span>MySQL</span></div>
+              <div class="project__links">
+                <a href="#" class="btn btn--glass btn--xs"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+                <a href="#" class="btn btn--ghost btn--xs"><i class="fa-brands fa-github"></i> Code</a>
+                <button class="btn btn--ghost btn--xs project__more">Details</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="project glass-card reveal" data-category="frontend" data-tilt
+            data-title="SaaS Landing UI"
+            data-desc="A premium, glassmorphic SaaS landing page with smooth scroll animations and responsive layouts."
+            data-tech="HTML,CSS,JavaScript">
+            <div class="project__img"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div class="project__body">
+              <h3 class="project__title">SaaS Landing UI</h3>
+              <p class="project__desc">Premium glassmorphic landing page with motion baked in.</p>
+              <div class="project__tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+              <div class="project__links">
+                <a href="#" class="btn btn--glass btn--xs"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+                <a href="#" class="btn btn--ghost btn--xs"><i class="fa-brands fa-github"></i> Code</a>
+                <button class="btn btn--ghost btn--xs project__more">Details</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="project glass-card reveal" data-category="backend" data-tilt
+            data-title="REST API Service"
+            data-desc="A secure, well-documented REST API built with Spring Boot featuring JWT auth, pagination and clean architecture."
+            data-tech="Java,Spring Boot,MySQL">
+            <div class="project__img"><i class="fa-solid fa-server"></i></div>
+            <div class="project__body">
+              <h3 class="project__title">REST API Service</h3>
+              <p class="project__desc">Secure Spring Boot API with JWT auth and clean architecture.</p>
+              <div class="project__tech"><span>Java</span><span>Spring Boot</span><span>MySQL</span></div>
+              <div class="project__links">
+                <a href="#" class="btn btn--glass btn--xs"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+                <a href="#" class="btn btn--ghost btn--xs"><i class="fa-brands fa-github"></i> Code</a>
+                <button class="btn btn--ghost btn--xs project__more">Details</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="project glass-card reveal" data-category="fullstack" data-tilt
+            data-title="Portfolio Dashboard"
+            data-desc="An analytics dashboard with charts, auth and role-based access — React frontend with a Spring Boot backend."
+            data-tech="React,Java,Spring Boot">
+            <div class="project__img"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="project__body">
+              <h3 class="project__title">Analytics Dashboard</h3>
+              <p class="project__desc">Role-based analytics dashboard with charts and secure auth.</p>
+              <div class="project__tech"><span>React</span><span>Spring Boot</span></div>
+              <div class="project__links">
+                <a href="#" class="btn btn--glass btn--xs"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+                <a href="#" class="btn btn--ghost btn--xs"><i class="fa-brands fa-github"></i> Code</a>
+                <button class="btn btn--ghost btn--xs project__more">Details</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- SERVICES -->
+    <!-- ============================================================= -->
+    <section id="services" class="section">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__tag">04 — Services</span>
+          <h2 class="section__title">What I can build for you.</h2>
+        </header>
+
+        <div class="services__grid">
+          <div class="glass-card service reveal" data-tilt><i class="fa-solid fa-paintbrush"></i><h3>Frontend Development</h3><p>Pixel-perfect, accessible interfaces with React and modern CSS.</p></div>
+          <div class="glass-card service reveal" data-tilt><i class="fa-solid fa-server"></i><h3>Backend Development</h3><p>Robust APIs and services with Java &amp; Spring Boot.</p></div>
+          <div class="glass-card service reveal" data-tilt><i class="fa-solid fa-layer-group"></i><h3>Full Stack Development</h3><p>End-to-end products from database to deployment.</p></div>
+          <div class="glass-card service reveal" data-tilt><i class="fa-solid fa-mobile-screen"></i><h3>Responsive Web Design</h3><p>Flawless experiences on mobile, tablet and desktop.</p></div>
+          <div class="glass-card service reveal" data-tilt><i class="fa-solid fa-plug"></i><h3>API Integration</h3><p>Connecting third-party services and building clean integrations.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- EXPERIENCE / TIMELINE -->
+    <!-- ============================================================= -->
+    <section id="experience" class="section">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__tag">05 — Journey</span>
+          <h2 class="section__title">Experience &amp; milestones.</h2>
+        </header>
+
+        <div class="timeline">
+          <div class="tl-item reveal">
+            <span class="tl-dot"></span>
+            <div class="glass-card tl-card">
+              <span class="tl-date">Present</span>
+              <h3>Full Stack Developer</h3>
+              <p>Building production web apps with React, Java &amp; Spring Boot.</p>
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <span class="tl-dot"></span>
+            <div class="glass-card tl-card">
+              <span class="tl-date">University</span>
+              <h3>B.Sc. in CSE — Southeast University</h3>
+              <p>Computer Science &amp; Engineering, focused on software engineering.</p>
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <span class="tl-dot"></span>
+            <div class="glass-card tl-card">
+              <span class="tl-date">Academic</span>
+              <h3>Academic Projects</h3>
+              <p>Event Management System, REST APIs, dashboards and more.</p>
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <span class="tl-dot"></span>
+            <div class="glass-card tl-card">
+              <span class="tl-date">Football</span>
+              <h3>Southeast Central Football Team</h3>
+              <p>Leadership, discipline and teamwork on and off the pitch.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- FOOTBALL -->
+    <!-- ============================================================= -->
+    <section id="football" class="section">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__tag">06 — Beyond Code</span>
+          <h2 class="section__title">Southeast Central Football Team.</h2>
+        </header>
+
+        <div class="football__grid">
+          <div class="football__intro reveal">
+            <p>
+              Football made me the engineer I am. As a member of the <strong>Southeast Central Football
+              Team</strong>, I've learned that great results come from discipline, communication and trust —
+              the exact ingredients of great software teams.
+            </p>
+            <div class="football__meta">
+              <div class="glass-card f-meta"><span class="f-meta__k">Position</span><span class="f-meta__v">Midfielder</span></div>
+              <div class="glass-card f-meta"><span class="f-meta__k">Role</span><span class="f-meta__v">Team Leader</span></div>
+            </div>
+            <ul class="football__list">
+              <li><i class="fa-solid fa-medal"></i> Multiple tournament appearances</li>
+              <li><i class="fa-solid fa-people-group"></i> Strong teamwork &amp; communication</li>
+              <li><i class="fa-solid fa-clock"></i> Discipline &amp; consistency</li>
+            </ul>
+          </div>
+
+          <!-- Stats -->
+          <div class="football__stats">
+            <div class="glass-card f-stat reveal"><span class="f-stat__num" data-count="50" data-suffix="+">0</span><span>Matches</span></div>
+            <div class="glass-card f-stat reveal"><span class="f-stat__num" data-count="20" data-suffix="+">0</span><span>Goals/Assists</span></div>
+            <div class="glass-card f-stat reveal"><span class="f-stat__num" data-count="5" data-suffix="">0</span><span>Trophies</span></div>
+            <div class="glass-card f-stat reveal"><span class="f-stat__num" data-count="3" data-suffix="">0</span><span>Seasons</span></div>
+          </div>
+        </div>
+
+        <!-- Gallery -->
+        <div class="gallery reveal">
+          <div class="gallery__item"><i class="fa-solid fa-futbol"></i><span>Match Day</span></div>
+          <div class="gallery__item"><i class="fa-solid fa-trophy"></i><span>Trophy</span></div>
+          <div class="gallery__item"><i class="fa-solid fa-people-group"></i><span>The Team</span></div>
+          <div class="gallery__item"><i class="fa-solid fa-fire"></i><span>Training</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- GITHUB -->
+    <!-- ============================================================= -->
+    <section id="github" class="section">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__tag">07 — Open Source</span>
+          <h2 class="section__title">GitHub activity.</h2>
+        </header>
+
+        <div class="github__grid">
+          <div class="glass-card gh-stat reveal"><i class="fa-brands fa-github"></i><span class="gh-num" data-count="30" data-suffix="+">0</span><span class="gh-label">Repositories</span></div>
+          <div class="glass-card gh-stat reveal"><i class="fa-solid fa-star"></i><span class="gh-num" data-count="120" data-suffix="+">0</span><span class="gh-label">Stars Earned</span></div>
+          <div class="glass-card gh-stat reveal"><i class="fa-solid fa-code-commit"></i><span class="gh-num" data-count="900" data-suffix="+">0</span><span class="gh-label">Commits</span></div>
+          <div class="glass-card gh-stat reveal"><i class="fa-solid fa-code-branch"></i><span class="gh-num" data-count="40" data-suffix="+">0</span><span class="gh-label">Pull Requests</span></div>
+        </div>
+
+        <!-- Contribution graph style grid (generated by JS) -->
+        <div class="glass-card contrib reveal">
+          <h4 class="contrib__title">Contribution graph</h4>
+          <div class="contrib__grid" id="contrib-grid" aria-hidden="true"></div>
+          <div class="contrib__legend"><span>Less</span><i class="c c0"></i><i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i><span>More</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- ACHIEVEMENTS -->
+    <!-- ============================================================= -->
+    <section id="achievements" class="section">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__tag">08 — Achievements</span>
+          <h2 class="section__title">Awards &amp; recognition.</h2>
+        </header>
+
+        <div class="ach__grid">
+          <div class="glass-card ach reveal" data-tilt><i class="fa-solid fa-certificate"></i><h3>Certificates</h3><p>Full Stack &amp; software engineering certifications.</p></div>
+          <div class="glass-card ach reveal" data-tilt><i class="fa-solid fa-award"></i><h3>Academic Awards</h3><p>Recognition for academic and project excellence.</p></div>
+          <div class="glass-card ach reveal" data-tilt><i class="fa-solid fa-trophy"></i><h3>Competitions</h3><p>Participation in coding &amp; hackathon events.</p></div>
+          <div class="glass-card ach reveal" data-tilt><i class="fa-solid fa-futbol"></i><h3>Football Achievements</h3><p>Trophies &amp; honors with Southeast Central Team.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- TESTIMONIALS -->
+    <!-- ============================================================= -->
+    <section id="testimonials" class="section">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__tag">09 — Testimonials</span>
+          <h2 class="section__title">What people say.</h2>
+        </header>
+
+        <div class="slider reveal" id="slider">
+          <div class="slider__track" id="slider-track">
+            <figure class="glass-card slide">
+              <div class="slide__stars">★★★★★</div>
+              <blockquote>Jisan is a rare blend of technical skill and leadership. He ships clean code and lifts the whole team.</blockquote>
+              <figcaption><span class="slide__avatar">A</span><span><strong>Arman H.</strong><br />Project Lead</span></figcaption>
+            </figure>
+            <figure class="glass-card slide">
+              <div class="slide__stars">★★★★★</div>
+              <blockquote>On the pitch and in the codebase, his discipline stands out. Reliable, focused and a real team player.</blockquote>
+              <figcaption><span class="slide__avatar">S</span><span><strong>Sadia K.</strong><br />Teammate</span></figcaption>
+            </figure>
+            <figure class="glass-card slide">
+              <div class="slide__stars">★★★★★</div>
+              <blockquote>Delivered a polished full-stack product ahead of schedule. Communication was flawless throughout.</blockquote>
+              <figcaption><span class="slide__avatar">R</span><span><strong>Rafiq M.</strong><br />Client</span></figcaption>
+            </figure>
+          </div>
+          <div class="slider__nav">
+            <button class="slider__btn" id="slide-prev" aria-label="Previous"><i class="fa-solid fa-arrow-left"></i></button>
+            <div class="slider__dots" id="slider-dots"></div>
+            <button class="slider__btn" id="slide-next" aria-label="Next"><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- CONTACT -->
+    <!-- ============================================================= -->
+    <section id="contact" class="section">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__tag">10 — Contact</span>
+          <h2 class="section__title">Let's build something great.</h2>
+        </header>
+
+        <div class="contact__grid">
+          <div class="contact__info reveal">
+            <a href="mailto:jisan@example.com" class="glass-card c-card"><i class="fa-solid fa-envelope"></i><div><span>Email</span><strong>jisan@example.com</strong></div></a>
+            <a href="tel:+8800000000000" class="glass-card c-card"><i class="fa-solid fa-phone"></i><div><span>Phone</span><strong>+880 0000-000000</strong></div></a>
+            <a href="#" class="glass-card c-card"><i class="fa-brands fa-whatsapp"></i><div><span>WhatsApp</span><strong>Chat with me</strong></div></a>
+            <div class="glass-card c-card"><i class="fa-solid fa-location-dot"></i><div><span>Location</span><strong>Bangladesh</strong></div></div>
+
+            <div class="contact__socials">
+              <a href="#" class="icon-btn" aria-label="GitHub" data-brand="github"><i class="fa-brands fa-github"></i></a>
+              <a href="#" class="icon-btn" aria-label="LinkedIn" data-brand="linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#" class="icon-btn" aria-label="Facebook" data-brand="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="icon-btn" aria-label="Instagram" data-brand="instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <form id="contact-form" class="glass-card contact__form reveal" novalidate>
+            <div class="field"><input id="c-name" type="text" required placeholder=" " /><label for="c-name">Your Name</label></div>
+            <div class="field"><input id="c-email" type="email" required placeholder=" " /><label for="c-email">Your Email</label></div>
+            <div class="field"><input id="c-subject" type="text" required placeholder=" " /><label for="c-subject">Subject</label></div>
+            <div class="field"><textarea id="c-message" rows="5" required placeholder=" "></textarea><label for="c-message">Message</label></div>
+            <button type="submit" id="c-submit" class="btn btn--primary btn--block magnetic">
+              <span class="btn__label">Send Message</span>
+              <span class="btn__spinner"></span>
+              <span class="btn__done"><i class="fa-solid fa-check"></i> Sent!</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Google Maps -->
+        <div class="map glass-card reveal">
+          <iframe
+            title="Location map — Bangladesh"
+            src="https://www.google.com/maps?q=Dhaka,Bangladesh&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================= -->
+  <!-- FOOTER -->
+  <!-- ============================================================= -->
+  <footer class="footer">
+    <div class="container footer__wrap">
+      <div class="footer__brand">
+        <a href="#hero" class="navbar__logo">Jisan<span>.</span>dev</a>
+        <p>Full Stack Developer &amp; Software Engineer. Building premium digital products from Bangladesh.</p>
+      </div>
+      <nav class="footer__links" aria-label="Quick links">
+        <h4>Quick Links</h4>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="footer__social">
+        <h4>Connect</h4>
+        <div class="contact__socials">
+          <a href="#" class="icon-btn" aria-label="GitHub" data-brand="github"><i class="fa-brands fa-github"></i></a>
+          <a href="#" class="icon-btn" aria-label="LinkedIn" data-brand="linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="icon-btn" aria-label="WhatsApp" data-brand="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom container">
+      <p>© <span id="year"></span> Jisan Ahmed. All rights reserved.</p>
+      <p>Designed &amp; built with <i class="fa-solid fa-heart"></i> &amp; lots of ☕</p>
+    </div>
+  </footer>
+
+  <!-- Project modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal__backdrop" id="modal-backdrop"></div>
+    <div class="glass-card modal__box" role="dialog" aria-modal="true">
+      <button class="modal__close" id="modal-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal__img"><i class="fa-solid fa-cube"></i></div>
+      <h3 id="modal-title" class="modal__title">Project</h3>
+      <p id="modal-desc" class="modal__desc"></p>
+      <div id="modal-tech" class="project__tech"></div>
+      <div class="modal__links">
+        <a href="#" class="btn btn--primary btn--sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+        <a href="#" class="btn btn--glass btn--sm"><i class="fa-brands fa-github"></i> View Code</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to top -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <!-- === SCRIPT === -->
+  <script src="script.js" defer></script>
+</body>
+</html>

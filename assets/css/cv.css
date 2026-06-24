@@ -1,0 +1,181 @@
+/* =============================================================
+   MD JISAN AHMED — CV  ·  cv.css
+   Two-column A4 résumé. Dark sidebar + white main column.
+   ATS-friendly: real text, no tables, no heavy images. ONE page.
+   ============================================================= */
+
+/* === TOKENS (shared with portfolio) === */
+:root {
+  --bg-dark:   #0d0d1a;
+  --accent:    #4f46e5;
+  --accent-2:  #06b6d4;
+  --highlight: #f59e0b;
+  --ink:       #14142b;
+  --ink-soft:  #4a4a66;
+  --line:      #e2e2ee;
+  --side-text: #c9c9e0;
+  --side-sub:  #8a8ab0;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body:    "DM Sans", sans-serif;
+  --font-mono:    "Fira Code", monospace;
+}
+
+/* === A4 PAGE SETUP === */
+@page { size: A4; margin: 0; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background: #555; /* gray backdrop only on screen */
+  color: var(--ink);
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  line-height: 1.45;
+}
+
+/* The printable page */
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+/* === SAVE AS PDF BUTTON (fixed, hidden on print) === */
+.save-btn {
+  position: fixed; top: 20px; right: 20px; z-index: 50;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-display); font-weight: 500; font-size: 0.9rem;
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 50px; padding: 0.7rem 1.3rem;
+  cursor: pointer; box-shadow: 0 8px 24px -8px rgba(79, 70, 229, 0.6);
+}
+.save-btn:hover { transform: translateY(-2px); }
+
+/* =============================================================
+   === LEFT COLUMN (dark) ===
+   ============================================================= */
+.col-left {
+  background: var(--bg-dark);
+  color: var(--side-text);
+  padding: 28px 22px;
+}
+
+.avatar {
+  width: 96px; height: 96px; margin: 0 auto 16px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: linear-gradient(145deg, var(--accent), var(--accent-2));
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 2rem;
+  color: #fff;
+}
+
+.cv-name {
+  font-family: var(--font-display); font-weight: 800; font-size: 1.5rem;
+  color: #fff; text-align: center; line-height: 1.1; margin-bottom: 6px;
+}
+.cv-role {
+  font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-2);
+  text-align: center; margin-bottom: 22px;
+}
+
+.block { margin-bottom: 20px; }
+.block__title {
+  font-family: var(--font-display); font-weight: 700; font-size: 0.8rem;
+  text-transform: uppercase; letter-spacing: 0.08em; color: #fff;
+  padding-bottom: 6px; margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* contact list */
+.contact-list { display: flex; flex-direction: column; gap: 8px; }
+.contact-list li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 0.72rem; color: var(--side-text); word-break: break-word;
+}
+.contact-list i { color: var(--accent); width: 14px; text-align: center; margin-top: 2px; }
+
+/* skill tags */
+.skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.skill-tags span {
+  font-family: var(--font-mono); font-size: 0.66rem;
+  padding: 3px 8px; border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.18); color: var(--side-text);
+}
+.skill-tags--amber span { border-color: rgba(245, 158, 11, 0.4); color: var(--highlight); }
+
+/* languages */
+.lang-list { display: flex; flex-direction: column; gap: 6px; }
+.lang-list li {
+  display: flex; justify-content: space-between; font-size: 0.74rem; color: var(--side-text);
+}
+.lang-list li span { color: var(--side-sub); font-size: 0.68rem; }
+
+/* =============================================================
+   === RIGHT COLUMN (white) ===
+   ============================================================= */
+.col-right { padding: 30px 28px; background: #fff; }
+
+.cv-header { margin-bottom: 18px; }
+.cv-header h1 {
+  font-family: var(--font-display); font-weight: 800; font-size: 1.9rem;
+  color: var(--ink); letter-spacing: -0.02em;
+}
+.cv-header__role {
+  font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-soft); margin-top: 2px;
+}
+.divider { height: 2px; width: 70px; background: var(--accent); margin-top: 10px; }
+
+.r-block { margin-bottom: 16px; }
+.r-title {
+  font-family: var(--font-display); font-weight: 700; font-size: 0.95rem;
+  color: var(--ink); margin-bottom: 9px;
+  display: flex; align-items: center; gap: 7px;
+}
+.r-title i { color: var(--accent); font-size: 0.85rem; }
+
+/* entries */
+.entry { margin-bottom: 11px; }
+.entry__head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.entry__role { font-family: var(--font-display); font-weight: 500; font-size: 0.86rem; color: var(--ink); }
+.entry__date { font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink-soft); white-space: nowrap; }
+.entry__org { font-size: 0.76rem; color: var(--ink-soft); }
+.entry__desc { font-size: 0.78rem; color: var(--ink-soft); margin: 3px 0 5px; }
+.entry__link { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); text-decoration: none; white-space: nowrap; }
+
+/* tech tags */
+.tech-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tech-tags span {
+  font-family: var(--font-mono); font-size: 0.66rem;
+  padding: 2px 7px; border-radius: 6px;
+  background: #f1f1f9; color: var(--ink-soft); border: 1px solid var(--line);
+}
+
+/* achievements */
+.ach-list { display: flex; flex-direction: column; gap: 6px; }
+.ach {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.8rem; color: var(--ink);
+  padding: 5px 9px; border-radius: 8px; border-left: 2px solid var(--line);
+  background: #fafaff;
+}
+.ach__medal { font-size: 1rem; }
+.ach--gold { border-left-color: var(--highlight); background: rgba(245, 158, 11, 0.07); }
+.ach--gold { color: var(--ink); }
+
+/* =============================================================
+   === PRINT RULES ===
+   ============================================================= */
+@media print {
+  body { background: #fff; padding: 0; }
+  .save-btn { display: none !important; }
+  .page { box-shadow: none; width: 100%; min-height: 100vh; }
+  .ach, .tech-tags span { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .col-left { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MD Jisan Ahmed — CV</title>
+
+  <!-- === FONTS === -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=DM+Sans:wght@400;500&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- === ICONS === -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- === STYLES === -->
+  <link rel="stylesheet" href="assets/css/cv.css" />
+</head>
+<body>
+
+  <!-- === SAVE AS PDF (hidden on print) === -->
+  <button class="save-btn" onclick="window.print()">
+    <i class="fa-solid fa-download"></i> Save as PDF
+  </button>
+
+  <!-- === A4 PAGE === -->
+  <main class="page">
+
+    <!-- ========================================================= -->
+    <!-- === LEFT COLUMN (dark, 30%) === -->
+    <!-- ========================================================= -->
+    <aside class="col-left">
+      <div class="avatar">JA</div>
+
+      <h1 class="cv-name">MD Jisan<br />Ahmed</h1>
+      <p class="cv-role">Frontend Developer<br />CSE Student</p>
+
+      <!-- === CONTACT === -->
+      <section class="block">
+        <h2 class="block__title">Contact</h2>
+        <ul class="contact-list">
+          <li><i class="fa-solid fa-envelope"></i><span>mdjisanahmeddorjoy@gmail.com</span></li>
+          <li><i class="fa-solid fa-phone"></i><span>[PHONE]</span></li>
+          <li><i class="fa-brands fa-github"></i><span>[GITHUB_LINK]</span></li>
+          <li><i class="fa-brands fa-linkedin"></i><span>[LINKEDIN_LINK]</span></li>
+          <li><i class="fa-solid fa-location-dot"></i><span>Dhaka, Bangladesh</span></li>
+        </ul>
+      </section>
+
+      <!-- === SKILLS === -->
+      <section class="block">
+        <h2 class="block__title">Skills</h2>
+        <div class="skill-tags">
+          <span>C</span><span>C++</span><span>Java</span><span>Python</span>
+          <span>JavaScript</span><span>HTML</span><span>CSS</span>
+          <span>Git</span><span>GitHub</span><span>Figma</span><span>VS Code</span>
+        </div>
+      </section>
+
+      <!-- === CURRENTLY LEARNING === -->
+      <section class="block">
+        <h2 class="block__title">Currently Learning</h2>
+        <div class="skill-tags skill-tags--amber">
+          <span>React</span><span>Node.js</span><span>Django</span>
+        </div>
+      </section>
+
+      <!-- === LANGUAGES === -->
+      <section class="block">
+        <h2 class="block__title">Languages</h2>
+        <ul class="lang-list">
+          <li>Bangla <span>Native</span></li>
+          <li>English <span>Professional</span></li>
+        </ul>
+      </section>
+    </aside>
+
+    <!-- ========================================================= -->
+    <!-- === RIGHT COLUMN (white, 70%) === -->
+    <!-- ========================================================= -->
+    <section class="col-right">
+
+      <!-- === HEADER === -->
+      <header class="cv-header">
+        <h1>MD Jisan Ahmed</h1>
+        <p class="cv-header__role">Frontend Developer · CSE Student · Football Champion</p>
+        <div class="divider"></div>
+      </header>
+
+      <!-- === EDUCATION === -->
+      <section class="r-block">
+        <h2 class="r-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+        <div class="entry">
+          <div class="entry__head">
+            <span class="entry__role">B.Sc. in Computer Science &amp; Engineering</span>
+            <span class="entry__date">Running</span>
+          </div>
+          <span class="entry__org">Southeast University · 3rd Year, 9th Semester</span>
+        </div>
+        <div class="entry">
+          <div class="entry__head">
+            <span class="entry__role">Higher Secondary Certificate (HSC)</span>
+            <span class="entry__date">[YEAR]</span>
+          </div>
+          <span class="entry__org">[College Name]</span>
+        </div>
+        <div class="entry">
+          <div class="entry__head">
+            <span class="entry__role">Secondary School Certificate (SSC)</span>
+            <span class="entry__date">[YEAR]</span>
+          </div>
+          <span class="entry__org">[School Name]</span>
+        </div>
+      </section>
+
+      <!-- === PROJECTS === -->
+      <section class="r-block">
+        <h2 class="r-title"><i class="fa-solid fa-folder-open"></i> Projects</h2>
+        <div class="entry">
+          <div class="entry__head">
+            <span class="entry__role">Event Management System</span>
+            <a class="entry__link" href="[GITHUB_LINK]"><i class="fa-brands fa-github"></i> GitHub</a>
+          </div>
+          <p class="entry__desc">Web application for creating and managing events end-to-end.</p>
+          <div class="tech-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+        </div>
+      </section>
+
+      <!-- === ACHIEVEMENTS === -->
+      <section class="r-block">
+        <h2 class="r-title"><i class="fa-solid fa-trophy"></i> Achievements</h2>
+        <ul class="ach-list">
+          <li class="ach ach--gold"><span class="ach__medal">🏆</span> Intra-Department Football Champion — 2× titles</li>
+          <li class="ach ach--gold"><span class="ach__medal">🏅</span> Intra-University Football Champion</li>
+          <li class="ach"><span class="ach__medal">⚽</span> Selected for University Central Football Team</li>
+          <li class="ach"><span class="ach__medal">💻</span> Built &amp; shipped Event Management System</li>
+        </ul>
+      </section>
+
+      <!-- === EXTRACURRICULAR === -->
+      <section class="r-block">
+        <h2 class="r-title"><i class="fa-solid fa-people-group"></i> Extracurricular</h2>
+        <ul class="ach-list">
+          <li class="ach"><span class="ach__medal">⚽</span> Active footballer — university &amp; departmental teams</li>
+          <li class="ach"><span class="ach__medal">🎨</span> UI/UX design &amp; frontend exploration</li>
+          <li class="ach"><span class="ach__medal">🤝</span> Team collaboration &amp; event organization</li>
+        </ul>
+      </section>
+
+    </section>
+  </main>
+</body>
+</html>

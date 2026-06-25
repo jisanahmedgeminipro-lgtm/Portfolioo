@@ -1,0 +1,163 @@
+/* =============================================================
+   JISAN AHMED — CV  ·  cv.css
+   Fillable A4 resume. Click any dotted blank and type, then
+   "Save as PDF". ATS-friendly: real text, no tables, one page.
+   ============================================================= */
+
+:root {
+  --bg-dark:   #0f172a;
+  --primary:   #6366f1;
+  --secondary: #8b5cf6;
+  --accent:    #06b6d4;
+  --ink:       #0b1220;
+  --ink-soft:  #475569;
+  --line:      #e2e8f0;
+  --side-text: #cbd5e1;
+  --side-sub:  #94a3b8;
+  --grad: linear-gradient(135deg, var(--primary), var(--secondary) 55%, var(--accent));
+  --font: "Inter", system-ui, sans-serif;
+}
+
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: #555;
+  color: var(--ink);
+  display: flex; justify-content: center;
+  padding: 90px 24px 24px;
+  line-height: 1.45;
+}
+
+/* ===== Save button + tip (screen only) ===== */
+.save-btn {
+  position: fixed; top: 20px; right: 24px; z-index: 50;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font); font-weight: 600; font-size: 0.9rem;
+  color: #fff; background: var(--grad); border: none; border-radius: 50px;
+  padding: 0.7rem 1.3rem; cursor: pointer; box-shadow: 0 10px 26px -10px var(--primary);
+}
+.save-btn:hover { transform: translateY(-2px); }
+.tip {
+  position: fixed; top: 22px; left: 24px; z-index: 50;
+  font-size: 0.82rem; color: #e2e8f0; max-width: 60%;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.tip i { color: #a5b4fc; }
+.tip__fill { border-bottom: 1.5px dashed #a5b4fc; padding: 0 0.3rem; }
+
+/* ===== Page ===== */
+.page {
+  width: 210mm; min-height: 297mm; background: #fff;
+  display: grid; grid-template-columns: 32% 68%;
+  box-shadow: 0 16px 50px rgba(0,0,0,0.4); overflow: hidden;
+}
+
+/* ===== Fillable blanks ===== */
+.fill {
+  border-bottom: 1.5px dashed #c7c7e6;
+  min-width: 60px; display: inline-block;
+  padding: 0 2px; outline: none; transition: background 0.2s ease, border-color 0.2s ease;
+}
+.fill:focus { background: rgba(99,102,241,0.08); border-bottom-color: var(--primary); }
+.fill:empty::before { content: attr(data-ph); color: #b6b6c8; font-style: italic; }
+.fill--block { display: block; width: 100%; min-height: 1.4em; margin-top: 4px; }
+.fill--lg { min-width: 200px; }
+/* on the dark column, blanks need lighter dashes */
+.left .fill { border-bottom-color: rgba(255,255,255,0.25); color: var(--side-text); }
+.left .fill:empty::before { color: rgba(255,255,255,0.4); }
+.left .fill:focus { background: rgba(255,255,255,0.08); border-bottom-color: var(--accent); }
+
+/* =============================================================
+   LEFT COLUMN (dark)
+   ============================================================= */
+.left { background: var(--bg-dark); color: var(--side-text); padding: 28px 22px; }
+.avatar {
+  width: 92px; height: 92px; margin: 0 auto 16px;
+  border-radius: 22px; display: grid; place-items: center;
+  font-weight: 900; font-size: 2rem; color: #fff; background: var(--grad);
+}
+.name { text-align: center; font-size: 1.4rem; font-weight: 800; color: #fff; line-height: 1.15; }
+.name .fill { border: none; color: #fff; }
+.name .fill:focus { background: rgba(255,255,255,0.08); }
+.role { text-align: center; font-size: 0.82rem; color: var(--accent); margin-bottom: 22px; }
+.role .fill { border: none; color: var(--accent); }
+
+.block { margin-bottom: 18px; }
+.block__title {
+  font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em;
+  color: #fff; padding-bottom: 6px; margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+}
+.contact { display: flex; flex-direction: column; gap: 9px; }
+.contact li { display: flex; align-items: center; gap: 8px; font-size: 0.72rem; }
+.contact i { color: var(--accent); width: 14px; text-align: center; }
+.contact .fill { flex: 1; font-size: 0.72rem; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tags span {
+  font-size: 0.66rem; padding: 3px 8px; border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.18); color: var(--side-text);
+}
+.lang { display: flex; flex-direction: column; gap: 7px; }
+.lang li { display: flex; justify-content: space-between; align-items: center; font-size: 0.74rem; }
+.lang .fill { font-size: 0.68rem; color: var(--side-sub); min-width: 50px; text-align: right; }
+
+/* =============================================================
+   RIGHT COLUMN (white)
+   ============================================================= */
+.right { padding: 30px 28px; background: #fff; }
+.head { margin-bottom: 16px; }
+.head h1 { font-size: 1.9rem; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); }
+.head h1 .fill { border: none; }
+.head__role { font-size: 0.85rem; color: var(--ink-soft); margin-top: 2px; }
+.divider { display: block; height: 3px; width: 64px; border-radius: 3px; background: var(--grad); margin-top: 10px; }
+
+.r-block { margin-bottom: 15px; }
+.r-title {
+  font-size: 0.92rem; font-weight: 700; color: var(--ink);
+  display: flex; align-items: center; gap: 7px; margin-bottom: 9px;
+}
+.r-title i { color: var(--primary); font-size: 0.82rem; }
+.summary { font-size: 0.82rem; color: var(--ink-soft); }
+
+.entry { margin-bottom: 11px; }
+.entry__row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.entry__title { font-size: 0.86rem; font-weight: 600; color: var(--ink); flex: 1; }
+.entry__date { font-size: 0.72rem; color: var(--ink-soft); white-space: nowrap; min-width: 70px; text-align: right; }
+.entry__org { display: inline-block; font-size: 0.78rem; color: var(--ink-soft); margin-top: 2px; }
+.entry__desc { font-size: 0.8rem; color: var(--ink-soft); }
+.entry__link { font-size: 0.7rem; color: var(--primary); min-width: 80px; text-align: right; }
+
+.tags--light { margin-top: 6px; }
+.tags--light span {
+  font-size: 0.66rem; padding: 2px 7px; border-radius: 6px;
+  background: #f1f1fb; border: 1px solid var(--line); color: var(--ink-soft);
+}
+
+.ach { display: flex; flex-direction: column; gap: 7px; }
+.ach li {
+  display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--ink);
+  padding: 5px 9px; border-radius: 8px; border-left: 2px solid var(--primary); background: #fafaff;
+}
+.ach__ico { font-size: 1rem; }
+.ach .fill { flex: 1; }
+
+/* =============================================================
+   PRINT
+   ============================================================= */
+@media print {
+  body { background: #fff; padding: 0; }
+  .save-btn, .tip { display: none !important; }
+  .page { box-shadow: none; width: 100%; min-height: 100vh; }
+  .fill { border-bottom-color: transparent !important; background: transparent !important; }
+  .fill:empty::before { content: "" !important; }   /* hide placeholders in PDF */
+  .left, .ach, .tags--light span, .avatar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* small screens: stack columns so it's usable before printing */
+@media (max-width: 760px) {
+  body { padding: 84px 12px 12px; }
+  .page { grid-template-columns: 1fr; width: 100%; }
+}

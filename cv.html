@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jisan Ahmed — CV</title>
+
+  <!-- Fonts (Inter) + Font Awesome icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="cv.css" />
+</head>
+<body>
+
+  <!-- Save as PDF (hidden when printing) -->
+  <button class="save-btn" onclick="window.print()">
+    <i class="fa-solid fa-download"></i> Save as PDF
+  </button>
+
+  <!-- Tip bar (hidden when printing) -->
+  <p class="tip">
+    <i class="fa-solid fa-circle-info"></i>
+    Tip: click any <span class="tip__fill">dotted blank</span> and type to fill it in, then press “Save as PDF”.
+  </p>
+
+  <!-- ===================== A4 PAGE ===================== -->
+  <main class="page">
+
+    <!-- ============ LEFT COLUMN (dark) ============ -->
+    <aside class="left">
+      <div class="avatar">JA</div>
+
+      <h1 class="name"><span class="fill" contenteditable="true" data-ph="Your full name">Jisan Ahmed</span></h1>
+      <p class="role"><span class="fill" contenteditable="true" data-ph="Your role">Full Stack Developer</span></p>
+
+      <!-- CONTACT -->
+      <section class="block">
+        <h2 class="block__title">Contact</h2>
+        <ul class="contact">
+          <li><i class="fa-solid fa-envelope"></i><span class="fill" contenteditable="true" data-ph="email@example.com"></span></li>
+          <li><i class="fa-solid fa-phone"></i><span class="fill" contenteditable="true" data-ph="+880 ____-______"></span></li>
+          <li><i class="fa-brands fa-github"></i><span class="fill" contenteditable="true" data-ph="github username">github.com/xisandurjoy</span></li>
+          <li><i class="fa-brands fa-linkedin"></i><span class="fill" contenteditable="true" data-ph="linkedin profile"></span></li>
+          <li><i class="fa-solid fa-location-dot"></i><span class="fill" contenteditable="true" data-ph="City, Country">Bangladesh</span></li>
+        </ul>
+      </section>
+
+      <!-- SKILLS -->
+      <section class="block">
+        <h2 class="block__title">Skills</h2>
+        <div class="tags">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span>
+          <span>Java</span><span>Spring Boot</span><span>MySQL</span>
+          <span>Git</span><span>GitHub</span><span>VS Code</span>
+        </div>
+      </section>
+
+      <!-- LANGUAGES -->
+      <section class="block">
+        <h2 class="block__title">Languages</h2>
+        <ul class="lang">
+          <li>Bangla <span class="fill" contenteditable="true" data-ph="level">Native</span></li>
+          <li>English <span class="fill" contenteditable="true" data-ph="level"></span></li>
+        </ul>
+      </section>
+
+      <!-- INTERESTS -->
+      <section class="block">
+        <h2 class="block__title">Interests</h2>
+        <div class="tags">
+          <span>⚽ Football</span><span>Open Source</span><span>UI/UX</span>
+        </div>
+      </section>
+    </aside>
+
+    <!-- ============ RIGHT COLUMN (white) ============ -->
+    <section class="right">
+
+      <!-- HEADER -->
+      <header class="head">
+        <h1><span class="fill fill--lg" contenteditable="true" data-ph="Your full name">Jisan Ahmed</span></h1>
+        <p class="head__role"><span class="fill" contenteditable="true" data-ph="Role / headline">Full Stack Developer &amp; Software Engineer</span></p>
+        <span class="divider"></span>
+      </header>
+
+      <!-- SUMMARY -->
+      <section class="r-block">
+        <h2 class="r-title"><i class="fa-solid fa-user"></i> Profile</h2>
+        <p class="summary fill fill--block" contenteditable="true" data-ph="Write 2–3 lines about yourself — who you are, what you build, and what you're looking for."></p>
+      </section>
+
+      <!-- EDUCATION -->
+      <section class="r-block">
+        <h2 class="r-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+
+        <div class="entry">
+          <div class="entry__row">
+            <span class="entry__title fill" contenteditable="true" data-ph="Degree (e.g. B.Sc. in CSE)">B.Sc. in Computer Science &amp; Engineering</span>
+            <span class="entry__date fill" contenteditable="true" data-ph="Year – Year"></span>
+          </div>
+          <span class="entry__org fill" contenteditable="true" data-ph="Institution name">Southeast University</span>
+        </div>
+
+        <div class="entry">
+          <div class="entry__row">
+            <span class="entry__title fill" contenteditable="true" data-ph="HSC / Higher Secondary"></span>
+            <span class="entry__date fill" contenteditable="true" data-ph="Year"></span>
+          </div>
+          <span class="entry__org fill" contenteditable="true" data-ph="College name"></span>
+        </div>
+
+        <div class="entry">
+          <div class="entry__row">
+            <span class="entry__title fill" contenteditable="true" data-ph="SSC / Secondary"></span>
+            <span class="entry__date fill" contenteditable="true" data-ph="Year"></span>
+          </div>
+          <span class="entry__org fill" contenteditable="true" data-ph="School name"></span>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section class="r-block">
+        <h2 class="r-title"><i class="fa-solid fa-briefcase"></i> Experience</h2>
+        <div class="entry">
+          <div class="entry__row">
+            <span class="entry__title fill" contenteditable="true" data-ph="Job title / Internship"></span>
+            <span class="entry__date fill" contenteditable="true" data-ph="Year – Year"></span>
+          </div>
+          <span class="entry__org fill" contenteditable="true" data-ph="Company / Organization"></span>
+          <p class="entry__desc fill fill--block" contenteditable="true" data-ph="What you did, tech you used, impact you made."></p>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="r-block">
+        <h2 class="r-title"><i class="fa-solid fa-folder-open"></i> Projects</h2>
+        <div class="entry">
+          <div class="entry__row">
+            <span class="entry__title fill" contenteditable="true" data-ph="Project name">Event Management System</span>
+            <span class="entry__link fill" contenteditable="true" data-ph="github link"></span>
+          </div>
+          <p class="entry__desc fill fill--block" contenteditable="true" data-ph="Short description of the project.">Full-stack platform to create, manage and track events end-to-end.</p>
+          <div class="tags tags--light"><span>React</span><span>Spring Boot</span><span>MySQL</span></div>
+        </div>
+        <div class="entry">
+          <div class="entry__row">
+            <span class="entry__title fill" contenteditable="true" data-ph="Project name"></span>
+            <span class="entry__link fill" contenteditable="true" data-ph="github link"></span>
+          </div>
+          <p class="entry__desc fill fill--block" contenteditable="true" data-ph="Short description of the project."></p>
+        </div>
+      </section>
+
+      <!-- ACHIEVEMENTS -->
+      <section class="r-block">
+        <h2 class="r-title"><i class="fa-solid fa-trophy"></i> Achievements</h2>
+        <ul class="ach">
+          <li><span class="ach__ico">🏆</span><span class="fill" contenteditable="true" data-ph="Achievement / award"></span></li>
+          <li><span class="ach__ico">⚽</span><span class="fill" contenteditable="true" data-ph="Football — Southeast Central Team">Member, Southeast Central Football Team</span></li>
+          <li><span class="ach__ico">📜</span><span class="fill" contenteditable="true" data-ph="Certificate name"></span></li>
+        </ul>
+      </section>
+
+    </section>
+  </main>
+
+</body>
+</html>

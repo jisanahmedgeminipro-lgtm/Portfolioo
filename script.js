@@ -501,9 +501,9 @@
      or Email. Fill in CONFIG below with real details.
      ========================================================= */
   const CHAT_CONFIG = {
-    whatsapp: "8801XXXXXXXXX",          // <-- put your WhatsApp number (country code, no +, no spaces)
-    email: "jisan@example.com",          // <-- your email
-    web3formsKey: ""                     // optional: paste a Web3Forms access key for in-page email send
+    whatsapp: "8801956560391",           // owner's WhatsApp (country code, no +, no spaces)
+    email: "jisan@example.com",          // used only if you re-enable the email option
+    web3formsKey: ""                     // optional Web3Forms access key for in-page email send
   };
 
   function toast(msg, ok) {
@@ -521,7 +521,6 @@
     const toggle = $("#chat-toggle"), close = $("#chat-close");
     const bubble = $("#chat-bubble"), bubbleX = $("#chat-bubble-x");
     const form = $("#chat-form"), nameEl = $("#chat-name"), msgEl = $("#chat-msg");
-    const waBtn = $("#chat-wa"), emailBtn = $("#chat-email");
 
     function openChat() {
       chat.classList.add("open"); chat.classList.add("chat--read");
@@ -547,45 +546,15 @@
       return (name ? `Hi Jisan, I'm ${name}. ` : "Hi Jisan! ") + msg;
     }
 
-    // WhatsApp
-    waBtn.addEventListener("click", () => {
+    // Send via WhatsApp (form submit — works on click + Enter)
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
       if (!msgEl.value.trim()) { msgEl.focus(); return toast("Please type a message first.", false); }
       const num = CHAT_CONFIG.whatsapp.replace(/[^0-9]/g, "");
       const url = "https://wa.me/" + num + "?text=" + encodeURIComponent(buildText());
       window.open(url, "_blank", "noopener");
       toast("Opening WhatsApp…");
       form.reset();
-    });
-
-    // Email (Web3Forms if key set, else mailto fallback)
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (!msgEl.value.trim()) { msgEl.focus(); return toast("Please type a message first.", false); }
-
-      if (CHAT_CONFIG.web3formsKey) {
-        emailBtn.disabled = true;
-        fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({
-            access_key: CHAT_CONFIG.web3formsKey,
-            subject: "New message from portfolio chat",
-            name: nameEl.value || "Visitor",
-            message: msgEl.value
-          })
-        }).then((r) => r.json()).then((d) => {
-          if (d.success) { toast("Message sent — thank you! 🎉"); form.reset(); }
-          else toast("Couldn't send. Try WhatsApp instead.", false);
-        }).catch(() => toast("Network error. Try WhatsApp instead.", false))
-          .finally(() => { emailBtn.disabled = false; });
-      } else {
-        // mailto fallback — opens the visitor's email app
-        const subject = encodeURIComponent("Message from portfolio");
-        const body = encodeURIComponent(buildText());
-        window.location.href = `mailto:${CHAT_CONFIG.email}?subject=${subject}&body=${body}`;
-        toast("Opening your email app…");
-        form.reset();
-      }
     });
   }
 

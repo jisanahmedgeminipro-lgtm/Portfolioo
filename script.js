@@ -311,19 +311,82 @@
   }
 
   /* =========================================================
-     GITHUB CONTRIBUTION GRID (generated)
+     GITHUB — LIVE DATA (public API, no auth, no database)
+     Pulls real repos / stars / followers for @xisandurjoy.
+     Runs in the visitor's browser, so the sandbox needs no net.
      ========================================================= */
-  function initContrib() {
-    const grid = $("#contrib-grid");
-    if (!grid) return;
-    const cells = 30 * 7;
-    let html = "";
-    for (let n = 0; n < cells; n++) {
-      const r = Math.random();
-      const lvl = r > 0.82 ? "l4" : r > 0.66 ? "l3" : r > 0.45 ? "l2" : r > 0.25 ? "l1" : "";
-      html += `<i class="${lvl}"></i>`;
+  function initGitHub() {
+    const USER = "xisandurjoy";
+    const api = (path) => fetch("https://api.github.com" + path, { headers: { Accept: "application/vnd.github+json" } });
+
+    // count-up helper to a real target
+    function animateTo(el, target) {
+      if (!el) return;
+      target = Number(target) || 0;
+      if (reduce) { el.textContent = target; return; }
+      const dur = 1200, start = performance.now();
+      (function f(now) {
+        const p = Math.min((now - start) / dur, 1);
+        const e = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(e * target);
+        if (p < 1) requestAnimationFrame(f); else el.textContent = target;
+      })(start);
     }
-    grid.innerHTML = html;
+
+    // 1) profile: repos / followers / following
+    api("/users/" + USER)
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((d) => {
+        animateTo($("#gh-repos"), d.public_repos);
+        animateTo($("#gh-followers"), d.followers);
+        animateTo($("#gh-following"), d.following);
+        animateTo($("#stat-repos"), d.public_repos);
+      })
+      .catch(() => fallback());
+
+    // 2) repos: total stars + highlight cards
+    api("/users/" + USER + "/repos?per_page=100&sort=updated")
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((repos) => {
+        if (!Array.isArray(repos)) return fallback();
+        const stars = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
+        animateTo($("#gh-stars"), stars);
+        renderRepos(repos);
+      })
+      .catch(() => fallback());
+
+    function renderRepos(repos) {
+      const wrap = $("#gh-repos-list");
+      if (!wrap) return;
+      const top = repos
+        .filter((r) => !r.fork)
+        .sort((a, b) => (b.stargazers_count - a.stargazers_count) || (new Date(b.pushed_at) - new Date(a.pushed_at)))
+        .slice(0, 6);
+      if (!top.length) { wrap.innerHTML = '<div class="gh-repo gh-repo--loading">No public repositories yet.</div>'; return; }
+      wrap.innerHTML = top.map((r) => `
+        <a class="gh-repo glass-card" href="${r.html_url}" target="_blank" rel="noopener">
+          <span class="gh-repo__top"><i class="fa-regular fa-folder-open"></i> ${escapeHtml(r.name)}</span>
+          <span class="gh-repo__desc">${escapeHtml(r.description || "No description provided.")}</span>
+          <span class="gh-repo__meta">
+            ${r.language ? `<span><i class="fa-solid fa-circle" style="color:var(--accent)"></i> ${escapeHtml(r.language)}</span>` : ""}
+            <span><i class="fa-solid fa-star"></i> ${r.stargazers_count}</span>
+            <span><i class="fa-solid fa-code-fork"></i> ${r.forks_count}</span>
+          </span>
+        </a>`).join("");
+    }
+
+    function fallback() {
+      const wrap = $("#gh-repos-list");
+      if (wrap && wrap.querySelector(".gh-repo--loading")) {
+        wrap.innerHTML = `<a class="gh-repo gh-repo--loading" href="https://github.com/${USER}" target="_blank" rel="noopener">Couldn't load live data (GitHub rate limit) — view full profile on GitHub →</a>`;
+      }
+      ["#gh-repos", "#gh-stars", "#gh-followers", "#gh-following", "#stat-repos"].forEach((s) => {
+        const el = $(s); if (el && el.textContent === "—") el.textContent = "—";
+      });
+    }
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
   }
 
   /* =========================================================
@@ -476,7 +539,7 @@
     initFilters();
     initModal();
     initSlider();
-    initContrib();
+    initGitHub();
     initTilt();
     initMagnetic();
     initForm();

@@ -423,23 +423,6 @@ button { font-family: inherit; color: inherit; background: none; border: none; c
 .gh-repo--loading { grid-column: 1 / -1; text-align: center; color: var(--muted); font-size: 0.9rem; }
 
 /* =============================================================
-   TESTIMONIALS SLIDER
-   ============================================================= */
-.slider { overflow: hidden; }
-.slider__track { display: flex; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
-.slide { flex: 0 0 100%; margin-right: 0; text-align: center; padding: var(--s-5) var(--s-4); }
-.slide__stars { color: var(--accent); letter-spacing: 0.2em; margin-bottom: var(--s-2); }
-.slide blockquote { font-size: 1.2rem; line-height: 1.6; max-width: 60ch; margin: 0 auto var(--s-3); }
-.slide figcaption { display: inline-flex; align-items: center; gap: 0.8rem; text-align: left; }
-.slide__avatar { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; color: #fff; background: var(--grad); }
-.slider__nav { display: flex; align-items: center; justify-content: center; gap: var(--s-2); margin-top: var(--s-3); }
-.slider__btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--glass-brd); background: var(--glass-bg); transition: all 0.25s ease; }
-.slider__btn:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
-.slider__dots { display: flex; gap: 0.5rem; }
-.slider__dots button { width: 9px; height: 9px; border-radius: 50%; background: var(--glass-brd); transition: all 0.25s ease; }
-.slider__dots button.active { width: 26px; border-radius: var(--r-pill); background: var(--grad); }
-
-/* =============================================================
    CONTACT
    ============================================================= */
 .contact__grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: var(--s-3); }

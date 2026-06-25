@@ -283,34 +283,6 @@
   }
 
   /* =========================================================
-     TESTIMONIAL SLIDER (auto + manual + dots)
-     ========================================================= */
-  function initSlider() {
-    const track = $("#slider-track");
-    if (!track) return;
-    const slides = $$(".slide", track);
-    const dots = $("#slider-dots");
-    let i = 0, timer;
-
-    slides.forEach((_, idx) => {
-      const d = document.createElement("button");
-      d.setAttribute("aria-label", "Go to slide " + (idx + 1));
-      d.addEventListener("click", () => go(idx));
-      dots.appendChild(d);
-    });
-    function go(n) {
-      i = (n + slides.length) % slides.length;
-      track.style.transform = `translateX(-${i * 100}%)`;
-      $$("button", dots).forEach((d, idx) => d.classList.toggle("active", idx === i));
-      restart();
-    }
-    function restart() { clearInterval(timer); if (!reduce) timer = setInterval(() => go(i + 1), 5000); }
-    $("#slide-next").addEventListener("click", () => go(i + 1));
-    $("#slide-prev").addEventListener("click", () => go(i - 1));
-    go(0);
-  }
-
-  /* =========================================================
      GITHUB — LIVE DATA (public API, no auth, no database)
      Pulls real repos / stars / followers for @xisandurjoy.
      Runs in the visitor's browser, so the sandbox needs no net.
@@ -538,7 +510,6 @@
     initReveal();
     initFilters();
     initModal();
-    initSlider();
     initGitHub();
     initTilt();
     initMagnetic();

@@ -474,6 +474,85 @@ button { font-family: inherit; color: inherit; background: none; border: none; c
 .back-to-top:hover { transform: translateY(-4px); }
 
 /* =============================================================
+   FLOATING CHAT / MESSAGE WIDGET
+   ============================================================= */
+.chat { position: fixed; left: var(--s-4); bottom: var(--s-4); z-index: 950; }
+
+.chat__toggle {
+  position: relative; width: 58px; height: 58px; border-radius: 50%;
+  background: var(--grad); color: #fff; font-size: 1.4rem;
+  display: grid; place-items: center; box-shadow: 0 16px 38px -14px var(--primary);
+  transition: transform 0.3s ease;
+}
+.chat__toggle:hover { transform: translateY(-3px) scale(1.05); }
+.chat__toggle-close { display: none; }
+.chat.open .chat__toggle-open { display: none; }
+.chat.open .chat__toggle-close { display: block; }
+.chat__badge {
+  position: absolute; top: -4px; right: -4px; min-width: 20px; height: 20px; padding: 0 5px;
+  border-radius: 50px; background: #ef4444; color: #fff; font-size: 0.72rem; font-weight: 700;
+  display: grid; place-items: center; border: 2px solid var(--bg);
+  animation: pulse 2s infinite;
+}
+.chat.open .chat__badge, .chat--read .chat__badge { display: none; }
+
+/* greeting bubble */
+.chat__bubble {
+  position: absolute; left: 70px; bottom: 8px; width: 220px;
+  background: var(--glass-bg); border: 1px solid var(--glass-brd); backdrop-filter: blur(16px);
+  color: var(--text); font-size: 0.85rem; padding: 0.8rem 1.8rem 0.8rem 0.9rem;
+  border-radius: 14px 14px 14px 4px; box-shadow: var(--shadow);
+  opacity: 0; transform: translateY(8px) scale(0.96); pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.chat__bubble.show { opacity: 1; transform: none; pointer-events: auto; }
+.chat__bubble-x { position: absolute; top: 4px; right: 6px; font-size: 1rem; color: var(--muted); line-height: 1; }
+.chat__bubble-x:hover { color: var(--text); }
+
+/* popup panel */
+.chat__pop {
+  position: absolute; left: 0; bottom: 72px; width: 320px; max-width: calc(100vw - 2rem);
+  padding: 0; overflow: hidden;
+  opacity: 0; transform: translateY(16px) scale(0.96); transform-origin: bottom left; pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.chat.open .chat__pop { opacity: 1; transform: none; pointer-events: auto; }
+.chat__head { display: flex; align-items: center; gap: 0.7rem; padding: var(--s-2); background: var(--grad); color: #fff; }
+.chat__avatar { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; background: rgba(255,255,255,0.2); }
+.chat__who strong { font-size: 0.95rem; display: block; }
+.chat__status { font-size: 0.72rem; opacity: 0.9; display: flex; align-items: center; gap: 0.35rem; }
+.chat__dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; }
+.chat__close { margin-left: auto; color: #fff; font-size: 1.1rem; opacity: 0.85; }
+.chat__close:hover { opacity: 1; }
+.chat__body { padding: var(--s-3); }
+.chat__greet { font-size: 0.85rem; color: var(--muted); margin-bottom: var(--s-2); }
+.chat__form { display: flex; flex-direction: column; gap: 0.6rem; }
+.chat__form input, .chat__form textarea {
+  width: 100%; padding: 0.7rem 0.85rem; font-family: inherit; font-size: 0.88rem; resize: vertical;
+  color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm);
+}
+.chat__form input:focus, .chat__form textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent); }
+.chat__wa { background: #25d366; color: #fff; }
+.chat__wa:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -12px #25d366; }
+.chat__email { width: 100%; }
+
+/* toast */
+.toast {
+  position: fixed; left: 50%; bottom: var(--s-4); transform: translate(-50%, 30px); z-index: 1200;
+  background: var(--glass-bg); border: 1px solid var(--glass-brd); backdrop-filter: blur(18px);
+  color: var(--text); padding: 0.8rem 1.3rem; border-radius: var(--r-pill); box-shadow: var(--shadow);
+  font-size: 0.9rem; font-weight: 500; opacity: 0; pointer-events: none;
+  display: flex; align-items: center; gap: 0.6rem; max-width: 90vw;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+.toast i { color: #4ade80; }
+
+@media (max-width: 480px) {
+  .chat__bubble { display: none; }
+}
+
+/* =============================================================
    PROJECT MODAL
    ============================================================= */
 .modal { position: fixed; inset: 0; z-index: 1100; display: none; align-items: center; justify-content: center; padding: var(--s-3); }

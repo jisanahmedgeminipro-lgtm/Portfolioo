@@ -628,6 +628,49 @@
     </div>
   </div>
 
+  <!-- ============================================================= -->
+  <!-- FLOATING CHAT / MESSAGE WIDGET -->
+  <!-- ============================================================= -->
+  <div class="chat" id="chat">
+    <!-- auto greeting bubble -->
+    <div class="chat__bubble" id="chat-bubble">
+      👋 Hi! Got a project or question? Message me here.
+      <button class="chat__bubble-x" id="chat-bubble-x" aria-label="Dismiss">&times;</button>
+    </div>
+
+    <!-- popup panel -->
+    <div class="chat__pop glass-card" id="chat-pop" aria-hidden="true" role="dialog" aria-label="Send a message">
+      <div class="chat__head">
+        <span class="chat__avatar">JA</span>
+        <div class="chat__who">
+          <strong>Jisan Ahmed</strong>
+          <span class="chat__status"><span class="chat__dot"></span> Usually replies quickly</span>
+        </div>
+        <button class="chat__close" id="chat-close" aria-label="Close chat"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="chat__body">
+        <p class="chat__greet">Hey! 👋 Drop your message below and I'll get back to you.</p>
+        <form id="chat-form" class="chat__form" novalidate>
+          <input id="chat-name" type="text" placeholder="Your name" autocomplete="name" />
+          <textarea id="chat-msg" rows="3" placeholder="Type your message..." required></textarea>
+          <button type="button" id="chat-wa" class="btn chat__wa"><i class="fa-brands fa-whatsapp"></i> Send on WhatsApp</button>
+          <button type="submit" id="chat-email" class="btn btn--glass chat__email"><i class="fa-solid fa-envelope"></i> Send via Email</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- launcher button -->
+    <button class="chat__toggle" id="chat-toggle" aria-label="Open message popup">
+      <i class="fa-solid fa-comment-dots chat__toggle-open"></i>
+      <i class="fa-solid fa-xmark chat__toggle-close"></i>
+      <span class="chat__badge" id="chat-badge">1</span>
+    </button>
+  </div>
+
+  <!-- toast notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
   <!-- Back to top -->
   <button id="back-to-top" class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
 

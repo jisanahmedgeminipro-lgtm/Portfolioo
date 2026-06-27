@@ -402,11 +402,39 @@
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       if (!form.checkValidity()) return form.reportValidity();
-      btn.classList.add("loading"); btn.disabled = true;
-      setTimeout(() => {
-        btn.classList.remove("loading"); btn.classList.add("done");
-        setTimeout(() => { btn.classList.remove("done"); btn.disabled = false; form.reset(); }, 2200);
-      }, 1500);
+
+      const name = ($("#c-name").value || "").trim();
+      const email = ($("#c-email").value || "").trim();
+      const subject = ($("#c-subject").value || "").trim();
+      const message = ($("#c-message").value || "").trim();
+
+      // Option A: real email delivery via Web3Forms (if a key is configured)
+      if (CHAT_CONFIG.web3formsKey) {
+        btn.classList.add("loading"); btn.disabled = true;
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            access_key: CHAT_CONFIG.web3formsKey,
+            subject: subject || "New message from portfolio",
+            name: name, email: email, message: message
+          })
+        }).then((r) => r.json()).then((d) => {
+          btn.classList.remove("loading");
+          if (d.success) { btn.classList.add("done"); toast("Message sent — thank you! 🎉"); form.reset(); }
+          else toast("Couldn't send. Please try the WhatsApp button.", false);
+          setTimeout(() => { btn.classList.remove("done"); btn.disabled = false; }, 2200);
+        }).catch(() => { btn.classList.remove("loading"); btn.disabled = false; toast("Network error. Try WhatsApp instead.", false); });
+        return;
+      }
+
+      // Option B (default): route to WhatsApp so the message actually reaches the owner
+      const text = `Hi Jisan! I'm ${name || "(no name)"} (${email || "no email"}).\nSubject: ${subject || "-"}\n\n${message}`;
+      const num = CHAT_CONFIG.whatsapp.replace(/[^0-9]/g, "");
+      window.open("https://wa.me/" + num + "?text=" + encodeURIComponent(text), "_blank", "noopener");
+      btn.classList.add("done");
+      toast("Opening WhatsApp to send your message…");
+      setTimeout(() => { btn.classList.remove("done"); form.reset(); }, 2200);
     });
   }
 
